@@ -1,0 +1,120 @@
+html,body{
+	background: #f5f1e5;
+	height: 100%;
+	width:100%;
+	position: relative;
+	overflow: hidden;
+}
+/* 首页样式 */
+section{
+	height: 100%;
+	width: 100%;
+	position: relative;
+}
+header{
+	height: 8%;
+	padding:3% 3% 0 0;
+}
+header .logo{
+	height: 100%;
+	text-align: right;
+}
+header .logo img{
+	height: 100%;
+}
+#index-main h1{
+	height: 15%;
+	text-align: center;
+	position: relative;
+	top: -2%;
+	z-index: 1;
+}
+#index-main h1 img,#rule h1 img{
+	height: 100%;
+}
+#index-main h1 img{
+	-webkit-animation: trans .7s cubic-bezier(0, 0, 0.22, 1.1);
+	-moz-animation: trans .7s cubic-bezier(0, 0, 0.22, 1.1);
+	animation: trans .7s cubic-bezier(0, 0, 0.22, 1.1);
+}
+#index-main div.content,#rule div.content{
+	padding-top: 6%;
+	height: 72%;
+	position: relative;
+}
+#index-main div.content p.get-btn{
+	display: block;
+	height: 11%;
+	text-align: center;
+	position: relative;
+	top:2%;
+	z-index: 1;
+}
+#index-main div.content p.get-btn img{
+	height: 100%;
+}
+#index-main div.content a.activity-rule{
+	display: block;
+	height: 5%;
+	position: absolute;
+	bottom: 3%;
+	right: 4%;
+	z-index: 1;
+}
+#index-main div.content a.activity-rule img{
+	height: 100%;
+}
+#index-main div.content div.bg-pic{
+	position: absolute;
+	width: 100%;
+	bottom:0;
+	z-index: 0;
+}
+#index-main div.content div.bg-pic img{
+	width:100%;
+}
+/* 首页弹窗 */
+section#rule{
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: #f5f1e5;
+	z-index: 99;
+	display: none;
+}
+section#rule h1{
+	height: 12%;
+	text-align: center;
+	position: relative;
+	z-index: 1;
+	top:-4%;
+}
+section#rule div.content{
+	padding-top: 2%;
+	height: 82%;
+	position: relative;
+	top:-4%;
+}
+section#rule div.content a.activity-rule{
+	position: absolute;
+	bottom:6%;
+	left: 50%;
+	transform: translateX(-50%);
+	width:15%;
+}
+section#rule div.content a.activity-rule img{
+	width:100%;
+}
+section#rule div.content div.bg-pic{
+	height: 96%;
+	text-align: center;
+	padding-bottom:5%;
+}
+section#rule div.content div.bg-pic img{
+	height:100%;
+}
+.get-btn{
+	-webkit-animation: animations 1.8s .5s infinite;
+	-moz-animation: animations 1.8s .5s infinite;
+	animation: animations 1.8s .5s infinite;
+}

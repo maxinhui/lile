@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.builbu.business.wechat.repository.MemberDrawMapper">
+  <resultMap id="BaseResultMap" type="top.builbu.business.wechat.entity.MemberDraw">
+     <id column="id" jdbcType="BIGINT" property="id" />
+     <result column="open_id" jdbcType="VARCHAR" property="openId" />
+     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+     <result column="rite_code" jdbcType="VARCHAR" property="riteCode" />
+  </resultMap>
+  
+  
+  <resultMap id="BaseResultMapDTO" type="top.builbu.business.wechat.dto.MemberDrawDTO">
+     <id column="id" jdbcType="BIGINT" property="id" />
+     <result column="open_id" jdbcType="VARCHAR" property="openId" />
+     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+     <result column="rite_code" jdbcType="VARCHAR" property="riteCode" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+     id,open_id,create_time,rite_code
+  </sql>
+<!-- 列表  -->
+  <select id="selectByList"  resultMap="BaseResultMapDTO">
+     select 
+     <include refid="Base_Column_List" />
+     from member_draw where 1=1
+      <if test="dto.id != null">
+      and  id = #{dto.id,jdbcType=BIGINT}
+      </if>
+      <if test="dto.openId != null">
+      and  open_id = #{dto.openId,jdbcType=VARCHAR}
+      </if>
+      <if test="dto.createTime != null">
+      and  create_time = #{dto.createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="dto.riteCode != null">
+      and  rite_code = #{dto.riteCode,jdbcType=VARCHAR}
+      </if>
+     order by id desc limit #{offset},#{limit}
+  </select>
+  
+<!-- 主键查询  -->
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from member_draw    
+    where open_id = #{openId,jdbcType=BIGINT}
+  </select>
+  
+
+<!-- 主键删除 --> 
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from member_draw
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+
+<!-- 插入  -->
+  <insert id="insert" parameterType="top.builbu.business.wechat.entity.MemberDraw">
+    insert into member_draw (
+	    id,open_id,create_time,rite_code
+      )
+    values (
+         #{id,jdbcType=BIGINT}, #{openId,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{riteCode,jdbcType=VARCHAR}
+      )
+  </insert>
+ 
+<!-- 修改 -->  
+  <update id="updateByPrimaryKey" parameterType="top.builbu.business.wechat.entity.MemberDraw">
+    update member_draw
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="openId != null">
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="riteCode != null">
+        rite_code = #{riteCode,jdbcType=VARCHAR}
+      </if>
+    </set>
+  
+    where id = #{id,jdbcType=BIGINT}
+   
+  </update>
+<!--   批量删除       -->
+  <delete id="deleteByAll" parameterType="java.lang.Long">
+      delete from member_draw where id in
+      <foreach item="id" collection="delids" open="(" separator="," close=")">
+          #{id}
+      </foreach>
+  </delete>  
+  
+  <select id="selectByCount" resultType="java.lang.Integer">
+		select count(1)
+		from member_draw where 1=1
+	      <if test="dto.id != null">
+	      and  id = #{dto.id,jdbcType=BIGINT}
+	      </if>
+	      <if test="dto.openId != null">
+	      and  open_id = #{dto.openId,jdbcType=VARCHAR}
+	      </if>
+	      <if test="dto.createTime != null">
+	      and  create_time = #{dto.createTime,jdbcType=TIMESTAMP}
+	      </if>
+	      <if test="dto.riteCode != null">
+	      and  rite_code = #{dto.riteCode,jdbcType=VARCHAR}
+	      </if>
+	</select>
+</mapper>

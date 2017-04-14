@@ -1,0 +1,111 @@
+
+/* 首页.get-btn动画效果 */
+
+@-webkit-keyframes trans{
+	0%{transform: translateX(-300px);}
+	80%{transform: translateX(30px);}
+	100%{transform: translateX(0px);}
+}
+@-moz-keyframes trans{
+	0%{transform: translateX(-300px);}
+	80%{transform: translateX(30px);}
+	100%{transform: translateX(0px);}
+}
+@keyframes trans{
+	0%{transform: translateX(-300px);}
+	80%{transform: translateX(30px);}
+	100%{transform: translateX(0px);}
+}
+@-webkit-keyframes animations{
+	0%{transform: scale(1);}
+	25%{transform: scale(1.15);}
+	45%{transform: scale(1);}
+	50%{transform: scale(1);}
+	75%{transform: scale(1.2);}
+	100%{transform: scale(1);}
+}
+@-moz-keyframes animations{
+	0%{transform: scale(1);}
+	25%{transform: scale(1.15);}
+	45%{transform: scale(1);}
+	50%{transform: scale(1);}
+	75%{transform: scale(1.2);}
+	100%{transform: scale(1);}
+}
+@keyframes animations{
+	0%{transform: scale(1);}
+	25%{transform: scale(1.15);}
+	45%{transform: scale(1);}
+	50%{transform: scale(1);}
+	75%{transform: scale(1.2);}
+	100%{transform: scale(1);}
+}
+@-webkit-keyframes circle{
+	0%{transform:rotate(0deg);}
+	50%{transform:rotate(180deg);}
+	100%{transform:rotate(360deg);}
+}
+@-moz-keyframes circle{
+	0%{transform:rotate(0deg);}
+	50%{transform:rotate(180deg);}
+	100%{transform:rotate(360deg);}
+}
+@keyframes circle{
+	0%{transform:rotate(0deg);}
+	50%{transform:rotate(180deg);}
+	100%{transform:rotate(360deg);}
+}
+@-webkit-keyframes animation1{
+	0%{transform:scale(2);opacity: 0;}
+	80%{opacity: 0.2;}
+	100%{transform:scale(1);opacity: 1;}
+}
+@-moz-keyframes animation1{
+	0%{transform:scale(2);opacity: 0;}
+	80%{opacity: 0.2;}
+	100%{transform:scale(1);opacity: 1;}
+}
+@keyframes animation1{
+	0%{transform:scale(2);opacity: 0;}
+	80%{opacity: 0.2;}
+	100%{transform:scale(1);opacity: 1;}
+}
+@-webkit-keyframes animation2{
+	0%{transform:rotate(-10deg) scale(1);}
+	20%{transform:rotate(10deg);}
+	40%{transform:rotate(-8deg) scale(1.2);}
+	60%{transform:rotate(8deg) scale(1.2);}
+	80%{transform:rotate(-3deg);}
+	100%{transform:rotate(0deg) scale(1);}
+}
+@-moz-keyframes animation2{
+	0%{transform:rotate(-10deg) scale(1);}
+	20%{transform:rotate(10deg);}
+	40%{transform:rotate(-8deg) scale(1.2);}
+	60%{transform:rotate(8deg) scale(1.2);}
+	80%{transform:rotate(-3deg);}
+	100%{transform:rotate(0deg) scale(1);}
+}
+@keyframes animation2{
+	0%{transform:rotate(-10deg) scale(1);}
+	20%{transform:rotate(10deg);}
+	40%{transform:rotate(-8deg) scale(1.2);}
+	60%{transform:rotate(8deg) scale(1.2);}
+	80%{transform:rotate(-3deg);}
+	100%{transform:rotate(0deg) scale(1);}
+}
+@-webkit-keyframes clickj{
+	0%{transform:translateY(4px);}
+	50%{transform:translateY(-4px);}
+	100%{transform:translateY(4px);}
+}
+@-moz-keyframes clickj{
+	0%{transform:translateY(4px);}
+	50%{transform:translateY(-4px);}
+	100%{transform:translateY(4px);}
+}
+@keyframes clickj{
+	0%{transform:translateY(4px);}
+	50%{transform:translateY(-4px);}
+	100%{transform:translateY(4px);}
+}

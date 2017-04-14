@@ -1,0 +1,15 @@
+/* 错误页 */
+html,body{
+	background: #fafafa;
+	height: 100%;
+	width:100%;
+	position: relative;
+	overflow: hidden;
+}
+#error{
+	height: 100%;
+	width:100%;
+	background-color: #fafafa;
+	background: url(../img/error.jpg) no-repeat center center;
+	background-size: cover;
+}

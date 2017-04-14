@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.builbu.business.wechat.repository.MemberAcMapper">
+  <resultMap id="BaseResultMap" type="top.builbu.business.wechat.entity.MemberAc">
+     <id column="id" jdbcType="BIGINT" property="id" />
+     <result column="open_id" jdbcType="VARCHAR" property="openId" />
+     <result column="sanc_time" jdbcType="TIMESTAMP" property="sancTime" />
+     <result column="rite_id" jdbcType="BIGINT" property="riteId" />
+  </resultMap>
+  
+  
+  <resultMap id="BaseResultMapDTO" type="top.builbu.business.wechat.dto.MemberAcDTO">
+     <id column="id" jdbcType="BIGINT" property="id" />
+     <result column="open_id" jdbcType="VARCHAR" property="openId" />
+     <result column="sanc_time" jdbcType="TIMESTAMP" property="sancTime" />
+     <result column="rite_id" jdbcType="BIGINT" property="riteId" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+     id,open_id,sanc_time,rite_id
+  </sql>
+<!-- 列表  -->
+  <select id="selectByList"  resultMap="BaseResultMapDTO">
+     select 
+     <include refid="Base_Column_List" />
+     from member_ac where 1=1
+      <if test="dto.id != null">
+      and  id = #{dto.id,jdbcType=BIGINT}
+      </if>
+      <if test="dto.openId != null">
+      and  open_id = #{dto.openId,jdbcType=VARCHAR}
+      </if>
+      <if test="dto.sancTime != null">
+      and  sanc_time = #{dto.sancTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="dto.riteId != null">
+      and  rite_id = #{dto.riteId,jdbcType=BIGINT}
+      </if>
+     order by id desc limit #{offset},#{limit}
+  </select>
+  
+<!-- 主键查询  -->
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from member_ac    
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  
+
+<!-- 主键删除 --> 
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from member_ac
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+
+<!-- 插入  -->
+  <insert id="insert" parameterType="top.builbu.business.wechat.entity.MemberAc">
+    insert into member_ac (
+	    id,open_id,sanc_time,rite_id
+      )
+    values (
+         #{id,jdbcType=BIGINT}, #{openId,jdbcType=VARCHAR}, #{sancTime,jdbcType=TIMESTAMP}, #{riteId,jdbcType=BIGINT}
+      )
+  </insert>
+ 
+<!-- 修改 -->  
+  <update id="updateByPrimaryKey" parameterType="top.builbu.business.wechat.entity.MemberAc">
+    update member_ac
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="openId != null">
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="sancTime != null">
+        sanc_time = #{sancTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="riteId != null">
+        rite_id = #{riteId,jdbcType=BIGINT}
+      </if>
+    </set>
+  
+    where id = #{id,jdbcType=BIGINT}
+   
+  </update>
+<!--   批量删除       -->
+  <delete id="deleteByAll" parameterType="java.lang.Long">
+      delete from member_ac where id in
+      <foreach item="id" collection="delids" open="(" separator="," close=")">
+          #{id}
+      </foreach>
+  </delete>  
+  
+  <select id="selectByCount" resultType="java.lang.Integer">
+		select count(1)
+		from member_ac where 1=1
+	      <if test="dto.id != null">
+	      and  id = #{dto.id,jdbcType=BIGINT}
+	      </if>
+	      <if test="dto.openId != null">
+	      and  open_id = #{dto.openId,jdbcType=VARCHAR}
+	      </if>
+	      <if test="dto.sancTime != null">
+	      and  sanc_time = #{dto.sancTime,jdbcType=TIMESTAMP}
+	      </if>
+	      <if test="dto.riteId != null">
+	      and  rite_id = #{dto.riteId,jdbcType=BIGINT}
+	      </if>
+	</select>
+</mapper>

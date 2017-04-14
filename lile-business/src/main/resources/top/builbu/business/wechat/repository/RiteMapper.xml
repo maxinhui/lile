@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.builbu.business.wechat.repository.RiteMapper">
+  <resultMap id="BaseResultMap" type="top.builbu.business.wechat.entity.Rite">
+     <id column="rite_id" jdbcType="BIGINT" property="riteId" />
+     <result column="rite_code" jdbcType="VARCHAR" property="riteCode" />
+     <result column="address" jdbcType="VARCHAR" property="address" />
+     <result column="count" jdbcType="BIGINT" property="count" />
+  </resultMap>
+  
+  
+  <resultMap id="BaseResultMapDTO" type="top.builbu.business.wechat.dto.RiteDTO">
+     <id column="rite_id" jdbcType="BIGINT" property="riteId" />
+     <result column="rite_code" jdbcType="VARCHAR" property="riteCode" />
+     <result column="address" jdbcType="VARCHAR" property="address" />
+     <result column="count" jdbcType="BIGINT" property="count" />
+     <result column="open_id" jdbcType="VARCHAR" property="openId" />
+     <result column="sanc_time" jdbcType="TIMESTAMP" property="sancTime" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+     rite_id,rite_code,address,count
+  </sql>
+<!-- 列表  -->
+  <select id="selectByList"  resultMap="BaseResultMapDTO">
+     select 
+     <include refid="Base_Column_List" />
+     from rite where 1=1
+      <if test="dto.riteId != null">
+      and  rite_id = #{dto.riteId,jdbcType=BIGINT}
+      </if>
+      <if test="dto.riteCode != null">
+      and  rite_code = #{dto.riteCode,jdbcType=VARCHAR}
+      </if>
+      <if test="dto.address != null">
+      and  address = #{dto.address,jdbcType=VARCHAR}
+      </if>
+      <if test="dto.count != null">
+      and  count = #{dto.count,jdbcType=BIGINT}
+      </if>
+     order by rite_id desc limit #{offset},#{limit}
+  </select>
+  
+<!-- 主键查询  -->
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from rite    
+    where rite_id = #{riteId,jdbcType=BIGINT}
+  </select>
+  
+
+<!-- 主键删除 --> 
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from rite
+    where rite_id = #{riteId,jdbcType=BIGINT}
+  </delete>
+
+
+<!-- 插入  -->
+  <insert id="insert" parameterType="top.builbu.business.wechat.entity.Rite">
+    insert into rite (
+	    rite_id,rite_code,address,count
+      )
+    values (
+         #{riteId,jdbcType=BIGINT}, #{riteCode,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{count,jdbcType=BIGINT}
+      )
+  </insert>
+ 
+<!-- 修改 -->  
+  <update id="updateByPrimaryKey" parameterType="top.builbu.business.wechat.entity.Rite">
+    update rite
+    <set>
+      <if test="riteId != null">
+        rite_id = #{riteId,jdbcType=BIGINT},
+      </if>
+      <if test="riteCode != null">
+        rite_code = #{riteCode,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="count != null">
+        count = #{count,jdbcType=BIGINT}
+      </if>
+    </set>
+  
+    where rite_id = #{riteId,jdbcType=BIGINT}
+   
+  </update>
+<!--   批量删除       -->
+  <delete id="deleteByAll" parameterType="java.lang.Long">
+      delete from rite where rite_id in
+      <foreach item="id" collection="delids" open="(" separator="," close=")">
+          #{id}
+      </foreach>
+  </delete>  
+  
+  <select id="selectByCount" resultType="java.lang.Integer">
+		select count(1)
+		from rite where 1=1
+	      <if test="dto.riteId != null">
+	      and  rite_id = #{dto.riteId,jdbcType=BIGINT}
+	      </if>
+	      <if test="dto.riteCode != null">
+	      and  rite_code = #{dto.riteCode,jdbcType=VARCHAR}
+	      </if>
+	      <if test="dto.address != null">
+	      and  address = #{dto.address,jdbcType=VARCHAR}
+	      </if>
+	      <if test="dto.count != null">
+	      and  count = #{dto.count,jdbcType=BIGINT}
+	      </if>
+	</select>
+	
+	
+	<select id="selectByCode" resultMap="BaseResultMapDTO">
+	select rt.rite_id,rt.address,(select mc.open_id from member_ac mc 
+	where rt.rite_id = mc.rite_id and mc.open_id = #{openId,jdbcType=VARCHAR}) as open_id
+    from rite rt WHERE rt.rite_code = #{riteCode,jdbcType=VARCHAR}
+	</select>
+	
+	<update id="addCount">
+	   update rite set count = count+1 where rite_id = #{riteId,jdbcType=BIGINT}
+	</update>
+	
+	<update id="addCountByCode">
+	   update rite set count = count+1 where rite_code = #{riteCode,jdbcType=BIGINT}
+	</update>
+	
+	<update id="addCountDraw">
+	   update rite set draw_count = draw_count+1 where rite_code = #{riteCode,jdbcType=BIGINT}
+	</update>
+</mapper>

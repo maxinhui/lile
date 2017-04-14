@@ -1,0 +1,58 @@
+/* finish页样式 */
+html,body{
+	background: #f5f1e5;
+	height: 100%;
+	width:100%;
+	position: relative;
+	overflow: hidden;
+}
+section{
+	height: 100%;
+	width: 100%;
+	position: relative;
+}
+header{
+	height: 8%;
+	padding:3% 3% 0 0;
+}
+header .logo{
+	height: 100%;
+	text-align: right;
+}
+header .logo img{
+	height: 100%;
+}
+#finish h1{
+	height: 10%;
+	text-align: center;
+	position: relative;
+	top:-10px;
+}
+#finish h1 img{
+	height: 100%;
+}
+#finish div.lile-tree{
+	height: 25%;
+	text-align: center;
+	padding-top: 2%;
+}
+#finish div.lile-tree img{
+	height: 100%;
+}
+#finish div.act-info{
+	width: 80%;
+	margin: 0 auto;
+	text-align: center;
+	padding-top: 15%;
+}
+#finish div.act-info img{
+	width: 100%;
+}
+#finish div.qrcode{
+	height: 25%;
+	text-align: center;
+	padding-top: 10%;
+}
+#finish div.qrcode img{
+	height: 100%;
+}
